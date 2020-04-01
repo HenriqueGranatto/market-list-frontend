@@ -98,7 +98,7 @@
             <!-- Content Row -->
             <div class="row">
               <div class='offset-md-9'>
-                <a href="#" class="btn btn-success btn-icon-split mb-4" onclick="$('#createCategoryModal').modal('show')">
+                <a href="#" class="btn btn-success btn-icon-split mb-4" onclick="insertCategory()">
                   <span class="icon text-white-50"><i class="fas fa-check"></i></span>
                   <span class="text">Adicionar nova categoria</span>
                 </a>
@@ -108,7 +108,7 @@
               <div class="card shadow col-md-12">
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="tableReport" width="100%" cellspacing="0">
                       <thead>
                         <tr>
                           <th style="width: 50%;">Nome</th>
@@ -121,12 +121,7 @@
                           <th>Ações</th>
                         </tr>
                       </tfoot>
-                      <tbody>
-                        <tr>
-                          <td>Carnes</td>
-                          <td><a href="#" class="btn btn-warning mr-3" onclick="$('#createCategoryModal').modal('show')"><i class="fas fa-edit"></i></a><a href="#" class="btn btn-danger" onclick="confirmDelete()"><i class="fas fa-trash-alt"></i></a></td>
-                        </tr>
-                      </tbody>
+                      <tbody></tbody>
                     </table>
                   </div>
                 </div>
@@ -158,20 +153,20 @@
       <i class="fas fa-angle-up"></i>
     </a>
 
-    <div id="createCategoryModal" class="modal fade" tabindex="-1" role="dialog">
+    <div id="categoryModal" class="modal fade" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-body">
             <form>
               <div class="form-group">
                 <label for="formGroupExampleInput">Nome</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Carnes, laticínios, gostosuras...">
+                <input type="text" id="categoryModalName" class="form-control" placeholder="Carnes, laticínios, gostosuras...">
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-primary">Salvar</button>
+            <button type="button" id="btnCategoryModal" class="btn btn-primary">Salvar</button>
           </div>
         </div>
       </div>
@@ -188,6 +183,7 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level custom scripts -->
+    <script src="js/category.js"></script>
     <script src="js/demo/datatables-demo.js"></script>
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>

@@ -1,26 +1,26 @@
 $(document).ready(async function(){
-    selectMarket()
+    selectCategory()
 })
 
-async function selectMarket()
+async function selectCategory()
 {
-    const response = await send(`http://localhost:3333/market`)
+    const response = await send(`http://localhost:3333/category`)
     renderReportData(await response.json())
 }
 
-async function insertMarket()
+async function insertCategory()
 {
-    $("#btnMarketModal").off()
-    $("#marketModalName").val("")
-    $('#marketModal').modal('show')
+    $("#btnCategoryModal").off()
+    $("#categoryModalName").val("")
+    $('#categoryModal').modal('show')
 
-    $("#btnMarketModal").click(async function(){
-        const payload = JSON.stringify({"name": $("#marketModalName").val()})
-        const response = await send(`http://localhost:3333/market`, "POST", payload)
+    $("#btnCategoryModal").click(async function(){
+        const payload = JSON.stringify({"name": $("#categoryModalName").val()})
+        const response = await send(`http://localhost:3333/category`, "POST", payload)
 
         if(response.status == 200)
         {
-            $('#marketModal').modal('hide')
+            $('#categoryModal').modal('hide')
 
             Swal.fire({
                 icon: 'success',
@@ -29,24 +29,24 @@ async function insertMarket()
                 timer: 1000
             })
 
-            selectMarket()
+            selectCategory()
         }
     })
 }
 
-async function updateMarket(market, name)
+async function updateCategory(category, name)
 {
-    $("#btnMarketModal").off()
-    $('#marketModal').modal('show')
-    $("#marketModalName").val(name)
+    $("#btnCategoryModal").off()
+    $('#categoryModal').modal('show')
+    $("#categoryModalName").val(name)
     
-    $("#btnMarketModal").click(async function(){
-        const payload = JSON.stringify({"name": $("#marketModalName").val()})
-        const response = await send(`http://localhost:3333/market/${market}`, "PUT", payload)
+    $("#btnCategoryModal").click(async function(){
+        const payload = JSON.stringify({"name": $("#categoryModalName").val()})
+        const response = await send(`http://localhost:3333/category/${category}`, "PUT", payload)
 
         if(response.status == 200)
         {
-            $('#marketModal').modal('hide')
+            $('#categoryModal').modal('hide')
 
             Swal.fire({
                 icon: 'success',
@@ -55,12 +55,12 @@ async function updateMarket(market, name)
                 timer: 1000
             })
 
-            selectMarket()
+            selectCategory()
         }
     })
 }
 
-async function deleteMarket(market)
+async function deleteCategory(category)
 {
     Swal.fire({
         title: 'Você tem certeza?',
@@ -81,7 +81,7 @@ async function deleteMarket(market)
     .then(async (result) => {
         if (result.value) 
         {
-            const response = await send(`http://localhost:3333/market/${market}`, "DELETE")
+            const response = await send(`http://localhost:3333/category/${category}`, "DELETE")
 
             if(response.status == 200)
             {
@@ -92,7 +92,7 @@ async function deleteMarket(market)
                     timer: 1000
                 })
 
-                selectMarket()
+                selectCategory()
             }
         }
     })
@@ -111,12 +111,12 @@ function renderReportData(data)
     data.map(function(obj){
         obj.action = 
         `
-            <a href="#" class="btn btn-warning mr-3" onclick="updateMarket(${obj.id}, '${obj.name}')"><i class="fas fa-edit"></i></a>
-            <a href="#" class="btn btn-danger" onclick="deleteMarket(${obj.id})"><i class="fas fa-trash-alt"></i></a>
+            <a href="#" class="btn btn-warning mr-3" onclick="updateCategory(${obj.id}, '${obj.name}')"><i class="fas fa-edit"></i></a>
+            <a href="#" class="btn btn-danger" onclick="deleteCategory(${obj.id})"><i class="fas fa-trash-alt"></i></a>
         `
     })
 
-    $("#tableReport").DataTable(prepareDatatable(data));
+    $("#table_report").DataTable(prepareDatatable(data));
 }
 
 /**
