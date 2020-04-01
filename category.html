@@ -188,36 +188,5 @@
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-
-    <script>
-      function confirmDelete()
-      {
-        Swal.fire({
-          title: 'Você tem certeza?',
-          text: "Não será possível desfazer essa ação!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Sim',
-          cancelButtonText: 'Não',
-          showClass: {
-            popup: 'animated fadeInDown faster'
-          },
-          hideClass: {
-            popup: 'animated fadeOutUp faster'
-          }
-        }).then((result) => {
-          if (result.value) {
-            Swal.fire({
-              icon: 'success',
-              title: 'Itens deletado',
-              showConfirmButton: false,
-              timer: 1000
-            })
-          }
-        })
-      }
-    </script>
   </body>
 </html>
