@@ -37,14 +37,14 @@
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Lista de compras</span></a>
         </li>
 
         <!-- Nav Item - Charts -->
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="market.html">
             <i class="fas fa-fw fa-shopping-cart"></i>
             <span>Mercados</span></a>
@@ -92,80 +92,15 @@
           <div class="container-fluid">
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-              <h1 class="h3 mb-0 text-gray-800">Lista de compras</h1>
+              <h1 class="h3 mb-0 text-gray-800">Mercados</h1>
             </div>
 
             <!-- Content Row -->
-            <div class="row" style="display: flex; align-items: center; justify-content: center;">
-
-              <!-- Earnings (Monthly) Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Itens totais</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">50</div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Earnings (Monthly) Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Preço total</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">R$ 300.00</div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Earnings (Monthly) Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-info shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Mercados pra visitar</div>
-                        <div class="row no-gutters align-items-center">
-                          <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">5</div>
-                          </div>
-                          <div class="col">
-                            <div class="progress progress-sm mr-2">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class='col-md-12'>
-                <a href="#" class="offset-md-7 btn btn-success btn-icon-split mb-4" onclick="$('#createItemModal').modal('show')">
+            <div class="row">
+              <div class='offset-md-9'>
+                <a href="#" class="btn btn-success btn-icon-split mb-4" onclick="$('#createMarketModal').modal('show')">
                   <span class="icon text-white-50"><i class="fas fa-check"></i></span>
-                  <span class="text">Adicionar novo item</span>
-                </a>
-                <a href="#" class="btn btn-danger btn-icon-split mb-4" onclick="confirmDelete()">
-                  <span class="icon text-white-50"><i class="fas fa-times"></i></span>
-                  <span class="text">Remover todos os itens</span>
+                  <span class="text">Adicionar novo mercado</span>
                 </a>
               </div>
 
@@ -176,26 +111,20 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                          <th style="width: 25%;">Item</th>
-                          <th style="width: 25%;">Preço</th>
-                          <th style="width: 25%;">Mercado</th>
-                          <th style="width: 25%;">Ações</th>
+                          <th style="width: 50%;">Nome</th>
+                          <th>Ações</th>
                         </tr>
                       </thead>
                       <tfoot>
                         <tr>
-                          <th>Item</th>
-                          <th>Preço</th>
-                          <th>Mercado</th>
+                          <th>Nome</th>
                           <th>Ações</th>
                         </tr>
                       </tfoot>
                       <tbody>
                         <tr>
-                          <td>Carne moída</td>
-                          <td>R$ 10.00</td>
-                          <td>Brunetto</td>
-                          <td><a href="#" class="btn btn-warning mr-3"><i class="fas fa-edit"></i></a><a href="#" class="btn btn-danger" onclick="confirmDelete()"><i class="fas fa-trash-alt"></i></a></td>
+                          <td>Carnes</td>
+                          <td><a href="#" class="btn btn-warning mr-3" onclick="$('#createMarketModal').modal('show')"><i class="fas fa-edit"></i></a><a href="#" class="btn btn-danger" onclick="confirmDelete()"><i class="fas fa-trash-alt"></i></a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -229,47 +158,14 @@
       <i class="fas fa-angle-up"></i>
     </a>
 
-    <div id="createItemModal" class="modal fade" tabindex="-1" role="dialog">
+    <div id="createMarketModal" class="modal fade" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <label>Produto</label>
-                <select class="form-control" >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label>Mercado</label>
-                <select class="form-control" >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label>Pesagem</label>
-                <div class="input-group">
-                  <input type="number" class="form-control" style="width:70% !important">
-                  <select class="form-control" >
-                    <option>L</option>
-                    <option>kg</option>
-                    <option>g</option>
-                    <option>mg</option>
-                    <option>ml</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <label>Quantidade</label>
-                <input type="number" class="form-control">
-              </div>
-              <div class="form-group">
-                <label>Preço</label>
-                <input type="number" class="form-control">
+                <label>Nome</label>
+                <input type="text" class="form-control" placeholder="Carrefour, Walmart, Zaffari...">
               </div>
             </form>
           </div>
