@@ -116,7 +116,7 @@ function renderReportData(data)
         `
     })
 
-    $("#table_report").DataTable(prepareDatatable(data));
+    $("#tableReport").DataTable(prepareDatatable(data));
 }
 
 /**
