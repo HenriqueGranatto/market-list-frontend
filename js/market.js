@@ -11,8 +11,9 @@ async function selectMarket()
 async function insertMarket()
 {
     $("#btnMarketModal").off()
-    $("#marketModalName").val("")
     $('#marketModal').modal('show')
+
+    $("#marketModalName").val("")
 
     $("#btnMarketModal").click(async function(){
         const payload = JSON.stringify({"name": $("#marketModalName").val()})
@@ -24,7 +25,7 @@ async function insertMarket()
 
             Swal.fire({
                 icon: 'success',
-                title: 'Mecado adicionado',
+                title: 'Mercado adicionado',
                 showConfirmButton: false,
                 timer: 1000
             })
@@ -38,6 +39,7 @@ async function updateMarket(market, name)
 {
     $("#btnMarketModal").off()
     $('#marketModal').modal('show')
+
     $("#marketModalName").val(name)
     
     $("#btnMarketModal").click(async function(){
@@ -50,7 +52,7 @@ async function updateMarket(market, name)
 
             Swal.fire({
                 icon: 'success',
-                title: 'Mecado atualizado',
+                title: 'Mercado atualizado',
                 showConfirmButton: false,
                 timer: 1000
             })

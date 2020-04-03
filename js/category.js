@@ -11,8 +11,9 @@ async function selectCategory()
 async function insertCategory()
 {
     $("#btnCategoryModal").off()
-    $("#categoryModalName").val("")
     $('#categoryModal').modal('show')
+
+    $("#categoryModalName").val("")
 
     $("#btnCategoryModal").click(async function(){
         const payload = JSON.stringify({"name": $("#categoryModalName").val()})
@@ -24,7 +25,7 @@ async function insertCategory()
 
             Swal.fire({
                 icon: 'success',
-                title: 'Mecado adicionado',
+                title: 'Categoria adicionado',
                 showConfirmButton: false,
                 timer: 1000
             })
@@ -38,6 +39,7 @@ async function updateCategory(category, name)
 {
     $("#btnCategoryModal").off()
     $('#categoryModal').modal('show')
+
     $("#categoryModalName").val(name)
     
     $("#btnCategoryModal").click(async function(){
@@ -50,7 +52,7 @@ async function updateCategory(category, name)
 
             Swal.fire({
                 icon: 'success',
-                title: 'Mecado atualizado',
+                title: 'Categoria atualizado',
                 showConfirmButton: false,
                 timer: 1000
             })
@@ -87,7 +89,7 @@ async function deleteCategory(category)
             {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Mercado deletado',
+                    title: 'Categoria deletado',
                     showConfirmButton: false,
                     timer: 1000
                 })
