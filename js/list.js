@@ -49,8 +49,8 @@ async function updateList(id, market, product, weight, weighing, amount, price)
     $("#btnListModal").off()
     $('#listModal').modal('show')
 
-    $(`#listModalProduct`).val(product)
-    $(`#listModalMarket`).val(market)
+    $(`#listModalProduct option[value=${product}]`).attr('selected','selected')
+    $(`#listModalMarket option[value=${market}]`).attr('selected','selected')
     $("#listModalPrice").val(price)
     $("#listModalWeight").val(weight)
     $("#listModalAmount").val(amount)
@@ -159,25 +159,31 @@ async function deleteAllList()
 /** Popula o select com as categorias */
 async function populateProductOptions()
 {
+    let options = ''
     let product = await (await send(`http://localhost:3333/product`)).json()
 
     $("#listModalProduct").html("")
 
     product.map(function(obj){
-        $("#listModalProduct").html(`<option value="${obj.productID}">${obj.productName}</option>`)
+        options += `<option value="${obj.productID}">${obj.productName}</option>`
     })
+
+    $("#listModalProduct").html(options)
 }
 
 /** Popula o select com os mercados */
 async function populateMarketOptions()
 {
+    let options = ''
     let market = await (await send(`http://localhost:3333/market`)).json()
 
     $("#listModalMarket").html("")
 
     market.map(function(obj){
-        $("#listModalMarket").html(`<option value="${obj.id}">${obj.name}</option>`)
+        options += `<option value="${obj.id}">${obj.name}</option>`
     })
+
+    $("#listModalMarket").html(options)
 }
 
 function getListModalData()

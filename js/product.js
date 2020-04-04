@@ -40,13 +40,13 @@ async function insertProduct()
 
 async function updateProduct(product, name, category)
 {
-    populateCategoryOptions()
+    await populateCategoryOptions()
 
     $("#btnProductModal").off()
     $('#productModal').modal('show')
 
     $("#productModalName").val(name)
-    $("#productModalCategory").val(category)
+    $(`#productModalCategory option[value=${category}]`).attr('selected','selected')
     
     $("#btnProductModal").click(async function(){
         const payload = JSON.stringify({"name": $("#productModalName").val(), category: $("#productModalCategory").val()})
@@ -113,13 +113,16 @@ async function deleteProduct(product)
 /** Popula o select com as categorias */
 async function populateCategoryOptions()
 {
+    let options = ''
     let categories = await (await send(`http://localhost:3333/category`)).json()
 
     $("#productModalCategory").html("")
 
     categories.map(function(obj){
-        $("#productModalCategory").html(`<option value="${obj.id}">${obj.name}</option>`)
+        options += `<option value="${obj.id}">${obj.name}</option>`
     })
+
+    $("#productModalCategory").html(options)
 }
 
 
