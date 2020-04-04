@@ -1,5 +1,7 @@
 $(document).ready(async function(){
     selectList()
+    $("#listModalPrice").mask('#.##0,00', {reverse: true});
+    $("#listModalWeighing").mask('#.##0,00', {reverse: true});
 })
 
 async function selectList()
@@ -191,6 +193,9 @@ function getListModalData()
     let payload = {};
     let formData = new FormData(document.getElementById('listModalForm'))
     formData.forEach((value, key) => {payload[key] = value});
+    
+    payload.weighing = parseFloat(payload.weighing.replace(",", ".")).toFixed(2)
+    payload.price = parseFloat(payload.price.replace(",", ".")).toFixed(2)
     payload = JSON.stringify(payload);
 
     return payload
