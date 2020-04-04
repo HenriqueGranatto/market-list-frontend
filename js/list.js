@@ -160,6 +160,8 @@ async function populateProductOptions()
 {
     let product = await (await send(`http://localhost:3333/product`)).json()
 
+    $("#listModalProduct").html("")
+
     product.map(function(obj){
         $("#listModalProduct").append(`<option value="${obj.productID}">${obj.productName}</option>`)
     })
@@ -169,6 +171,8 @@ async function populateProductOptions()
 async function populateMarketOptions()
 {
     let market = await (await send(`http://localhost:3333/market`)).json()
+
+    $("#listModalMarket").html("")
 
     market.map(function(obj){
         $("#listModalMarket").append(`<option value="${obj.id}">${obj.name}</option>`)
@@ -240,6 +244,7 @@ function prepareDatatable(data, columns = false)
             { data: "product", width: "10%"},
             { data: "market", width: "10%"},
             { data: "price", width: "10%"},
+            { data: "difference", width: "10%"},
             { data: "amount", width: "10%"},
             { data: "weighing", width: "10%"},
             { data: "weight", width: "10%"},

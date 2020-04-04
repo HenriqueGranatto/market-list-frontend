@@ -115,6 +115,8 @@ async function populateCategoryOptions()
 {
     let categories = await (await send(`http://localhost:3333/category`)).json()
 
+    $("#productModalCategory").html("")
+
     categories.map(function(obj){
         $("#productModalCategory").append(`<option value="${obj.id}">${obj.name}</option>`)
     })
