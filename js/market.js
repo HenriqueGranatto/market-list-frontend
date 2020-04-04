@@ -4,7 +4,7 @@ $(document).ready(async function(){
 
 async function selectMarket()
 {
-    const response = await send(`http://localhost:3333/market`)
+    const response = await send(`http://35.222.24.235:3000/market`)
     renderReportData(await response.json())
 }
 
@@ -17,7 +17,7 @@ async function insertMarket()
 
     $("#btnMarketModal").click(async function(){
         const payload = JSON.stringify({"name": $("#marketModalName").val()})
-        const response = await send(`http://localhost:3333/market`, "POST", payload)
+        const response = await send(`http://35.222.24.235:3000/market`, "POST", payload)
 
         if(response.status == 200)
         {
@@ -44,7 +44,7 @@ async function updateMarket(market, name)
     
     $("#btnMarketModal").click(async function(){
         const payload = JSON.stringify({"name": $("#marketModalName").val()})
-        const response = await send(`http://localhost:3333/market/${market}`, "PUT", payload)
+        const response = await send(`http://35.222.24.235:3000/market/${market}`, "PUT", payload)
 
         if(response.status == 200)
         {
@@ -83,7 +83,7 @@ async function deleteMarket(market)
     .then(async (result) => {
         if (result.value) 
         {
-            const response = await send(`http://localhost:3333/market/${market}`, "DELETE")
+            const response = await send(`http://35.222.24.235:3000/market/${market}`, "DELETE")
 
             if(response.status == 200)
             {

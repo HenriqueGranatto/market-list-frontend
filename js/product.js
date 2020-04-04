@@ -4,7 +4,7 @@ $(document).ready(async function(){
 
 async function selectProduct()
 {
-    const response = await send(`http://localhost:3333/product`)
+    const response = await send(`http://35.222.24.235:3000/product`)
     renderReportData(await response.json())
 }
 
@@ -20,7 +20,7 @@ async function insertProduct()
 
     $("#btnProductModal").click(async function(){
         const payload = JSON.stringify({"name": $("#productModalName").val(), category: $("#productModalCategory").val()})
-        const response = await send(`http://localhost:3333/product`, "POST", payload)
+        const response = await send(`http://35.222.24.235:3000/product`, "POST", payload)
 
         if(response.status == 200)
         {
@@ -50,7 +50,7 @@ async function updateProduct(product, name, category)
     
     $("#btnProductModal").click(async function(){
         const payload = JSON.stringify({"name": $("#productModalName").val(), category: $("#productModalCategory").val()})
-        const response = await send(`http://localhost:3333/product/${product}`, "PUT", payload)
+        const response = await send(`http://35.222.24.235:3000/product/${product}`, "PUT", payload)
 
         if(response.status == 200)
         {
@@ -89,7 +89,7 @@ async function deleteProduct(product)
     .then(async (result) => {
         if (result.value) 
         {
-            const response = await send(`http://localhost:3333/product/${product}`, "DELETE")
+            const response = await send(`http://35.222.24.235:3000/product/${product}`, "DELETE")
 
             if(response.status == 200)
             {
@@ -114,7 +114,7 @@ async function deleteProduct(product)
 async function populateCategoryOptions()
 {
     let options = ''
-    let categories = await (await send(`http://localhost:3333/category`)).json()
+    let categories = await (await send(`http://35.222.24.235:3000/category`)).json()
 
     $("#productModalCategory").html("")
 

@@ -4,7 +4,7 @@ $(document).ready(async function(){
 
 async function selectCategory()
 {
-    const response = await send(`http://localhost:3333/category`)
+    const response = await send(`http://35.222.24.235:3000/category`)
     renderReportData(await response.json())
 }
 
@@ -17,7 +17,7 @@ async function insertCategory()
 
     $("#btnCategoryModal").click(async function(){
         const payload = JSON.stringify({"name": $("#categoryModalName").val()})
-        const response = await send(`http://localhost:3333/category`, "POST", payload)
+        const response = await send(`http://35.222.24.235:3000/category`, "POST", payload)
 
         if(response.status == 200)
         {
@@ -44,7 +44,7 @@ async function updateCategory(category, name)
     
     $("#btnCategoryModal").click(async function(){
         const payload = JSON.stringify({"name": $("#categoryModalName").val()})
-        const response = await send(`http://localhost:3333/category/${category}`, "PUT", payload)
+        const response = await send(`http://35.222.24.235:3000/category/${category}`, "PUT", payload)
 
         if(response.status == 200)
         {
@@ -83,7 +83,7 @@ async function deleteCategory(category)
     .then(async (result) => {
         if (result.value) 
         {
-            const response = await send(`http://localhost:3333/category/${category}`, "DELETE")
+            const response = await send(`http://35.222.24.235:3000/category/${category}`, "DELETE")
 
             if(response.status == 200)
             {
