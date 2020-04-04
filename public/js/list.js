@@ -213,7 +213,7 @@ function renderReportData(data)
             <a href="#" class="btn btn-danger" onclick="deleteList(${obj.id})"><i class="fas fa-trash-alt"></i></a>
         `
         obj.price = `R$ ${parseFloat(obj.price).toFixed(2)}`
-        obj.difference = `${obj.difference}x`
+        obj.difference = `R$ ${obj.difference}`
     })
 
     $("#tableReport").DataTable(prepareDatatable(data[0]));
