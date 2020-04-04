@@ -43,14 +43,14 @@ async function insertList()
 
 async function updateList(id, market, product, weight, weighing, amount, price)
 {
-    populateProductOptions()
-    populateMarketOptions()
+    await populateProductOptions()
+    await populateMarketOptions()
 
     $("#btnListModal").off()
     $('#listModal').modal('show')
 
-    $("#listModalProduct").val(product)
-    $("#listModalMarket").val(market)
+    $(`#listModalProduct`).val(product)
+    $(`#listModalMarket`).val(market)
     $("#listModalPrice").val(price)
     $("#listModalWeight").val(weight)
     $("#listModalAmount").val(amount)
@@ -164,7 +164,7 @@ async function populateProductOptions()
     $("#listModalProduct").html("")
 
     product.map(function(obj){
-        $("#listModalProduct").append(`<option value="${obj.productID}">${obj.productName}</option>`)
+        $("#listModalProduct").html(`<option value="${obj.productID}">${obj.productName}</option>`)
     })
 }
 
@@ -176,7 +176,7 @@ async function populateMarketOptions()
     $("#listModalMarket").html("")
 
     market.map(function(obj){
-        $("#listModalMarket").append(`<option value="${obj.id}">${obj.name}</option>`)
+        $("#listModalMarket").html(`<option value="${obj.id}">${obj.name}</option>`)
     })
 }
 

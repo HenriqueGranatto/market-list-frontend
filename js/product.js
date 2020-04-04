@@ -118,7 +118,7 @@ async function populateCategoryOptions()
     $("#productModalCategory").html("")
 
     categories.map(function(obj){
-        $("#productModalCategory").append(`<option value="${obj.id}">${obj.name}</option>`)
+        $("#productModalCategory").html(`<option value="${obj.id}">${obj.name}</option>`)
     })
 }
 
