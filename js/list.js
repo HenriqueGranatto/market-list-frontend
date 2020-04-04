@@ -41,15 +41,16 @@ async function insertList()
     })
 }
 
-async function updateList(id, weight, weighing, amount, price)
+async function updateList(id, market, product, weight, weighing, amount, price)
 {
     populateProductOptions()
     populateMarketOptions()
-    console.log(id, weight, weighing, amount, price)
 
     $("#btnListModal").off()
     $('#listModal').modal('show')
 
+    $("#listModalProduct").val(product)
+    $("#listModalMarket").val(market)
     $("#listModalPrice").val(price)
     $("#listModalWeight").val(weight)
     $("#listModalAmount").val(amount)
@@ -202,7 +203,7 @@ function renderReportData(data)
     data[0].map(function(obj){
         obj.action = 
         `
-            <a href="#" class="btn btn-warning mr-3" onclick="updateList('${obj.id}', '${obj.weight}', '${obj.weighing}', '${obj.amount}', '${obj.price}')"><i class="fas fa-edit"></i></a>
+            <a href="#" class="btn btn-warning mr-3" onclick="updateList('${obj.id}', '${obj.marketID}', '${obj.productID}', '${obj.weight}', '${obj.weighing}', '${obj.amount}', '${obj.price}')"><i class="fas fa-edit"></i></a>
             <a href="#" class="btn btn-danger" onclick="deleteList(${obj.id})"><i class="fas fa-trash-alt"></i></a>
         `
         obj.price = `R$ ${parseFloat(obj.price).toFixed(2)}`

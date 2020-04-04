@@ -133,7 +133,6 @@ async function populateCategoryOptions()
 function renderReportData(data)
 {
     data.map(function(obj){
-        console.log(obj)
         obj.action = 
         `
             <a href="#" class="btn btn-warning mr-3" onclick="updateProduct(${obj.productID}, '${obj.productName}', '${obj.categoryID}')"><i class="fas fa-edit"></i></a>
