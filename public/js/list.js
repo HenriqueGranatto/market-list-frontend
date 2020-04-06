@@ -218,7 +218,6 @@ function renderReportData(data)
             <a href="#" class="btn btn-danger" onclick="deleteList(${obj.id})"><i class="fas fa-trash-alt"></i></a>
         `
         obj.price = `R$ ${parseFloat(obj.price).toFixed(2)}`
-        obj.difference = `R$ ${obj.difference}`
     })
 
     $("#tableReport").DataTable(prepareDatatable(data[0]));
@@ -254,14 +253,14 @@ function prepareDatatable(data, columns = false)
         
         "columns": 
         [
-            { data: "product", width: "10%"},
-            { data: "market", width: "10%"},
-            { data: "price", width: "10%"},
-            { data: "difference", width: "10%"},
-            { data: "amount", width: "10%"},
-            { data: "weighing", width: "10%"},
-            { data: "weight", width: "10%"},
-            { data: "action", width: "10%"},
+            { data: "product",   width: "10%"},
+            { data: "market",    width: "10%"},
+            { data: "price",     width: "10%"},
+            { data: "unitPrice", width: "10%"},
+            { data: "amount",    width: "10%"},
+            { data: "weighing",  width: "10%"},
+            { data: "weight",    width: "10%"},
+            { data: "action",    width: "20%"},
         ],
 
         buttons: 
