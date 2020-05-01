@@ -4,7 +4,7 @@ $(document).ready(async function(){
 
 async function selectAnalytic()
 {
-    const response = await (await send(`http://35.222.24.235:3000/analytic`)).json()
+    const response = await (await send(`http://localhost:3333/analytic`)).json()
 
     $("#totalItems").text(`${response.totalItems}`)
     $("#totalBetterPrice").text(`R$ ${parseFloat(response.totalBetterPrice).toFixed(2)}`)
@@ -24,6 +24,12 @@ async function populateOtherMarketsCards(markets)
     let cards = ""
 
     $("#marketsData").html("")
+
+    if(!!markets || markets.lenght < 1)
+    {
+        $("#marketsData").html("<h4 class='h4 mb-0 text-gray-800'>Nada para mostrar</h4>")
+        return
+    }
 
     markets.map(function(market){
         cards += 

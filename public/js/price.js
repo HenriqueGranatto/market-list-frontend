@@ -6,7 +6,7 @@ $(document).ready(async function(){
 
 async function selectList()
 {
-    const response = await send(`http://35.222.24.235:3000/list`)
+    const response = await send(`http://localhost:3333/list`)
     renderReportData(await response.json())
 }
 
@@ -25,7 +25,7 @@ async function insertList()
     $("#btnListModal").click(async function(){
         let payload = getListModalData()
 
-        const response = await send(`http://35.222.24.235:3000/list`, "POST", payload)
+        const response = await send(`http://localhost:3333/list`, "POST", payload)
 
         if(response.status == 200)
         {
@@ -60,7 +60,7 @@ async function updateList(id, market, product, weight, weighing, amount, price)
     
     $("#btnListModal").click(async function(){
         const payload = getListModalData()
-        const response = await send(`http://35.222.24.235:3000/list/${id}`, "PUT", payload)
+        const response = await send(`http://localhost:3333/list/${id}`, "PUT", payload)
 
         if(response.status == 200)
         {
@@ -99,7 +99,7 @@ async function deleteList(id)
     .then(async (result) => {
         if (result.value) 
         {
-            const response = await send(`http://35.222.24.235:3000/list/${id}`, "DELETE")
+            const response = await send(`http://localhost:3333/list/${id}`, "DELETE")
 
             if(response.status == 200)
             {
@@ -137,7 +137,7 @@ async function deleteAllList()
     .then(async (result) => {
         if (result.value) 
         {
-            const response = await send(`http://35.222.24.235:3000/list`, "DELETE")
+            const response = await send(`http://localhost:3333/list`, "DELETE")
 
             if(response.status == 200)
             {
@@ -162,7 +162,7 @@ async function deleteAllList()
 async function populateProductOptions()
 {
     let options = ''
-    let product = await (await send(`http://35.222.24.235:3000/product`)).json()
+    let product = await (await send(`http://localhost:3333/product`)).json()
 
     $("#listModalProduct").html("")
 
@@ -177,7 +177,7 @@ async function populateProductOptions()
 async function populateMarketOptions()
 {
     let options = ''
-    let market = await (await send(`http://35.222.24.235:3000/market`)).json()
+    let market = await (await send(`http://localhost:3333/market`)).json()
 
     $("#listModalMarket").html("")
 

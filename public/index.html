@@ -45,6 +45,13 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
+          <a class="nav-link" href="price.html">
+            <i class="fas fa-dollar-sign"></i>
+            <span>Lista de preços</span></a>
+        </li>
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
           <a class="nav-link" href="analytic.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Analítico</span></a>
@@ -104,6 +111,60 @@
 
             <!-- Content Row -->
             <div class="row" style="display: flex; align-items: center; justify-content: center;">
+              <!-- Earnings (Monthly) Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Itens totais</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalItems"></div>
+                      </div>
+                      <div class="col-auto">
+                          <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                      </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Earnings (Monthly) Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                  <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Melhores Preços</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalBetterPrice"></div>
+                      </div>
+                      <div class="col-auto">
+                          <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Earnings (Monthly) Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                  <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Melhores Mercados</div>
+                          <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="totalBetterMarkets"></div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-auto">
+                          <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
+                      </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
 
               <div class='col-md-12'>
                 <a href="#" class="offset-md-9 btn btn-success btn-icon-split mb-4" onclick="insertList()">
@@ -123,14 +184,13 @@
                     <table class="table table-bordered" id="tableReport" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                          <th style="width: 25%;">Produto</th>
-                          <th style="width: 25%;">Mercado</th>
-                          <th style="width: 25%;">Preço</th>
-                          <th style="width: 25%;">Preço Unit.</th>
-                          <th style="width: 25%;">Quantidade</th>
-                          <th style="width: 25%;">Peso</th>
-                          <th style="width: 25%;">Pesagem</th>
-                          <th style="width: 25%;">Ações</th>
+                          <th style="width: 15%;">Produto</th>
+                          <th style="width: 15%;">Mercado</th>
+                          <th style="width: 15%;">Preço</th>
+                          <th style="width: 15%;">Quantidade</th>
+                          <th style="width: 15%;">Categoria</th>
+                          <th style="width: 15%;">Prioridade</th>
+                          <th style="width: 15%;">Ações</th>
                         </tr>
                       </thead>
                       <tfoot>
@@ -138,10 +198,9 @@
                           <th>Produto</th>
                           <th>Mercado</th>
                           <th>Preço</th>
-                          <th>Preço Unit.</th>
                           <th>Quantidade</th>
-                          <th>Peso</th>
-                          <th>Pesagem</th>
+                          <th>Categoria</th>
+                          <th>Prioridade</th>
                           <th>Ações</th>
                         </tr>
                       </tfoot>

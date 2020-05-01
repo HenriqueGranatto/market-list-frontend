@@ -44,7 +44,7 @@
         </li>
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="price.html">
             <i class="fas fa-dollar-sign"></i>
             <span>Lista de preços</span></a>
@@ -65,7 +65,7 @@
         </li>
 
         <!-- Nav Item - Charts -->
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="product.html">
             <i class="fas fa-utensils"></i>
             <span>Produtos</span></a>
@@ -106,16 +106,20 @@
           <div class="container-fluid">
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-              <h1 class="h3 mb-0 text-gray-800">Produtos</h1>
+              <h1 class="h3 mb-0 text-gray-800">Lista de Preços</h1>
             </div>
 
             <!-- Content Row -->
-            <div class="row">
-              <div class='offset-md-9'>
-                <a href="#" class="btn btn-success btn-icon-split mb-4" onclick="insertProduct()">
+            <div class="row" style="display: flex; align-items: center; justify-content: center;">
+              <div class='col-md-12'>
+                <a href="#" class="offset-md-9 btn btn-success btn-icon-split mb-4" onclick="insertList()">
                   <span class="icon text-white-50"><i class="fas fa-check"></i></span>
-                  <span class="text">Adicionar novo produto</span>
+                  <span class="text">Adicionar novo item</span>
                 </a>
+                <!-- <a href="#" class="btn btn-danger btn-icon-split mb-4" onclick="deleteAllList()">
+                  <span class="icon text-white-50"><i class="fas fa-times"></i></span>
+                  <span class="text">Remover todos os itens</span>
+                </a> -->
               </div>
 
               <!-- DataTales Example -->
@@ -125,19 +129,28 @@
                     <table class="table table-bordered" id="tableReport" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                          <th style="width: 50%;">Nome</th>
-                          <th style="width: 50%;">Categoria</th>
-                          <th>Ações</th>
+                          <th style="width: 15%;">Produto</th>
+                          <th style="width: 15%;">Mercado</th>
+                          <th style="width: 15%;">Preço</th>
+                          <th style="width: 15%;">Preço Unit.</th>
+                          <th style="width: 15%;">Peso</th>
+                          <th style="width: 15%;">Pesagem</th>
+                          <th style="width: 15%;">Ações</th>
                         </tr>
                       </thead>
                       <tfoot>
                         <tr>
-                          <th>Nome</th>
-                          <th>Categoria</th>
+                          <th>Produto</th>
+                          <th>Mercado</th>
+                          <th>Preço</th>
+                          <th>Preço Unit.</th>
+                          <th>Peso</th>
+                          <th>Pesagem</th>
                           <th>Ações</th>
                         </tr>
                       </tfoot>
-                      <tbody></tbody>
+                      <tbody></tr>
+                      </tbody>
                     </table>
                   </div>
                 </div>
@@ -169,24 +182,45 @@
       <i class="fas fa-angle-up"></i>
     </a>
 
-    <div id="productModal" class="modal fade" tabindex="-1" role="dialog">
+    <div id="listModal" class="modal fade" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-body">
-            <form>
+            <form id="listModalForm">
               <div class="form-group">
-                <label>Nome</label>
-                <input type="text" id="productModalName" class="form-control" placeholder="Molho de tomate, cebola, carne moída...">
+                <label>Produto</label>
+                <select id="listModalProduct" class="form-control" name="product"></select>
               </div>
               <div class="form-group">
-                <label>Categoria</label>
-                <select id="productModalCategory" class="form-control" ></select>
+                <label>Mercado</label>
+                <select id="listModalMarket" class="form-control" name="market"></select>
+              </div>
+              <div class="form-group">
+                <label>Pesagem</label>
+                <div class="input-group">
+                  <input type="text" id="listModalWeighing" class="form-control" style="width:70% !important" name="weighing">
+                  <select id="listModalWeight" class="form-control" name="weight">
+                    <option value="L">L</option>
+                    <option value="kg">kg</option>
+                    <option value="g">g</option>
+                    <option value="mg">mg</option>
+                    <option value="ml">ml</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Quantidade</label>
+                <input type="number" id="listModalAmount" class="form-control" name="amount">
+              </div>
+              <div class="form-group">
+                <label>Preço</label>
+                <input type="text" id="listModalPrice" class="form-control" name="price">
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            <button type="button" id="btnProductModal" class="btn btn-primary">Salvar</button>
+            <button type="button" id="btnListModal" class="btn btn-primary">Salvar</button>
           </div>
         </div>
       </div>
@@ -203,9 +237,11 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/product.js"></script>
+    <script src="js/price.js"></script>
+    <script src="js/jquery.inputmask.min.js"></script>
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>           
   </body>
 </html>
